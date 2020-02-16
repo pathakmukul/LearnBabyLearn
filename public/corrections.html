@@ -1,0 +1,32 @@
+<html>
+  <H1> CORRECTIONS </H1>
+
+  <pre id="jay"></pre>
+<!-- <script src="diff.js"></script> -->
+<script src="../node_modules/diff/dist/diff.js"></script>
+
+<script>
+var one = 'Twinkle, twinkle, little star  How I wonder what you are Up above the world so high Like a diamond in the sky Twinkle, twinkle little star How I wonder what you are',
+    other = 'twinkle twinkle little star how i band or what you are up above the world so high like a diamond in the sky twinkle twinkle little star how i bander what you are',
+    color = '',
+    span = null;
+ 
+var diff = Diff.diffChars(one, other),
+    display = document.getElementById('jay'),
+    fragment = document.createDocumentFragment();
+ 
+diff.forEach(function(part){
+  // green for additions, red for deletions
+  // grey for common parts
+  color = part.added ? 'green' :
+    part.removed ? 'red' : 'grey';
+  span = document.createElement('span');
+  span.style.color = color;
+  span.appendChild(document
+    .createTextNode(part.value));
+  fragment.appendChild(span);
+});
+ 
+display.appendChild(fragment);
+</script> 
+</html>
